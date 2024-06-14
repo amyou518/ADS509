@@ -1,0 +1,15 @@
+requests==2.31.0
+datasets
+accelerate
+transformers
+bitsandbytes
+trl
+huggingface_hub
+emoji==0.6.0
+pyLDAvis==3.4.1
+gensim==4.3.0
+matplotlib
+seaborn
+torch
+nltk
+scikit-learn
