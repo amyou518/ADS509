@@ -1,6 +1,12 @@
 # Exploring Mental Health Discourse on Reddit
 
-This repository contains code and data for analyzing posts from two Reddit communities: `r/MentalHealth` and `r/MentalHealthSupport`. The data was retrieved using the Reddit API via the `praw` library. The dataset is aimed at understanding discussions around mental health on these platforms.
+## Analysis Goals
+
+This project aims to analyze and understand the discourse surrounding mental health topics on Reddit, specifically focusing on the communities of `r/MentalHealth` and `r/MentalHealthSupport`. The analysis will explore patterns in posts, sentiment expressed, and common topics discussed within these communities.
+
+## Methodology
+
+The data was collected using the Reddit API through the `praw` library in Python. Each subreddit's posts were retrieved, cleaned, and processed using `pandas` and `nltk` for natural language processing tasks such as tokenization and sentiment analysis. Descriptive statistics were calculated to provide insights into post characteristics and community engagement.
 
 ## Dataset Description
 
@@ -29,13 +35,15 @@ The dataset contains 13 variables:
 The combined dataset contains 3,977 entries.
 
 ## Repository Contents
-
-- `reddit_posts.csv`: The combined dataset of posts from `r/MentalHealth` and `r/MentalHealthSupport`.
+- `data/`: Folder containing the following datasets used for analysis:
+  - `mental_health_posts.csv`: Dataset from `r/MentalHealth`.
+  - `mental_health_support_posts.csv`: Dataset from `r/MentalHealthSupport`.
+  - `reddit_posts.csv`: The combined dataset of posts from both subreddits.
+- `descriptive_statistics.ipynb`: Jupyter Notebook containing the analysis of descriptive statistics for both subreddits.
 
 ### Prerequisites
+To run the analysis, make sure you have the following installed:
 - Python 3.x
 - `praw` library
 - `pandas` library
-
-
-
+- `nltk` library (with WordNet, punkt, stopwords datasets downloaded)
