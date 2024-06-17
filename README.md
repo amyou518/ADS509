@@ -40,8 +40,8 @@ The combined dataset contains 3,977 entries.
   - `mental_health_support_posts.csv`: Dataset from `r/MentalHealthSupport`.
   - `reddit_posts.csv`: The combined dataset of posts from both subreddits.
   - `mental_health_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealth`.
-  - `mental_health_support_posts.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealthSupport`.
-  - `reddit_posts.csv`: Cleaned dataset after normalization and tokenization for the combined dataset.
+  - `mental_health_support_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealthSupport`.
+  - `reddit_posts.csv_cleaned`: Cleaned dataset after normalization and tokenization for the combined dataset.
 - `reddit_mental_health_posts_extraction.ipynb`: Jupyter Notebook focusing on data retrieval and extraction of Reddit posts related to mental health.
 - `reddit_mental_health_posts_analysis.ipynb`: Jupyter Notebook focusing on tokenization, normalization, and descriptive statistics analysis of Reddit posts related to mental health.
 
