@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit Sentiment Analysis</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            color: #2e7bdf;
+        }
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        textarea {
+            width: 100%;
+            max-width: 700px;
+            height: 300px;
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            background-color: #2e7bdf;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #2c6cb3;
+        }
+        #sentiment-result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        #advice {
+            margin-top: 10px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .negative {
+            color: #d9534f;
+        }
+        .positive {
+            color: #5cb85c;
+        }
+        .neutral {
+            color: #f0ad4e;
+        }
+        .link {
+            color: #2e7bdf;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .link:hover {
+            color: #265dab;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reddit Mental Health Post Analysis</h1>
+    <form id="sentiment-form">
+        <label for="post-input">Enter Reddit Post:</label><br>
+        <textarea id="post-input" name="text" placeholder="Type your Reddit post here..." required></textarea><br><br>
+        <button type="submit">Predict Sentiment</button>
+    </form>
+    <div id="sentiment-result">
+        <p>Sentiment: <span id="sentiment-value">neutral</span></p>
+        <p id="advice"></p>
+    </div>
+
+    <script>
+        document.getElementById('sentiment-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ text: document.getElementById('post-input').value })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('sentiment-value').textContent = data.sentiment;
+                document.getElementById('advice').textContent = data.advice;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
