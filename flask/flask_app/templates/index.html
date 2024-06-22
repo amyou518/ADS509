@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reddit Sentiment Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -60,13 +61,13 @@
             font-size: 16px;
             line-height: 1.6;
         }
-        .negative {
+        .sentiment-negative {
             color: #d9534f;
         }
-        .positive {
+        .sentiment-positive {
             color: #5cb85c;
         }
-        .neutral {
+        .sentiment-neutral {
             color: #f0ad4e;
         }
         .link {
@@ -87,24 +88,46 @@
         <button type="submit">Predict Sentiment</button>
     </form>
     <div id="sentiment-result">
-        <p>Sentiment: <span id="sentiment-value">neutral</span></p>
+        <p>Sentiment: <span id="sentiment-value" class="sentiment-neutral">neutral</span></p>
         <p id="advice"></p>
     </div>
 
     <script>
-        document.getElementById('sentiment-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.getElementById('post-input').addEventListener('input', function(event) {
+            // Reset sentiment and advice display
+            document.getElementById('sentiment-value').textContent = 'Analyzing...';
+            document.getElementById('advice').textContent = '';
+
             fetch('/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ text: document.getElementById('post-input').value })
+                body: JSON.stringify({ text: event.target.value })
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('sentiment-value').textContent = data.sentiment;
-                document.getElementById('advice').textContent = data.advice;
+                const sentimentValue = document.getElementById('sentiment-value');
+                sentimentValue.textContent = data.sentiment;
+
+                // Remove existing sentiment classes
+                sentimentValue.classList.remove('sentiment-negative', 'sentiment-positive', 'sentiment-neutral');
+
+                // Add appropriate sentiment class based on data.sentiment
+                if (data.sentiment === 'negative') {
+                    sentimentValue.classList.add('sentiment-negative');
+                } else if (data.sentiment === 'positive') {
+                    sentimentValue.classList.add('sentiment-positive');
+                } else {
+                    sentimentValue.classList.add('sentiment-neutral');
+                }
+
+                const adviceElement = document.getElementById('advice');
+                if (data.sentiment === 'negative') {
+                    adviceElement.innerHTML = data.advice;
+                } else {
+                    adviceElement.textContent = data.advice;
+                }
             })
             .catch(error => console.error('Error:', error));
         });
