@@ -79,7 +79,7 @@ The combined dataset contains 3,977 entries.
 - **Jupyter Notebooks**: Notebooks focusing on different aspects of the analysis:
   - `reddit_mental_health_posts_extraction.ipynb`: Data extraction from Reddit related to mental health.
   - `reddit_mental_health_posts_analysis.ipynb`: Tokenization, normalization, and descriptive statistics of Reddit posts.
-  - `reddit_mental_health_posts_modeling.ipynb`: Advanced text analysis and machine learning techniques for sentiment analysis and topic modeling in `r/MentalHealth` and `r/MentalHealthSupport` communities.
+  - `reddit_mental_health_posts_downstream.ipynb`: Advanced text analysis and machine learning techniques for sentiment analysis and topic modeling in `r/MentalHealth` and `r/MentalHealthSupport` communities.
 
 
 ### Prerequisites
@@ -94,10 +94,13 @@ To run the analysis, make sure you have the following installed:
 To replicate this analysis on your local machine, follow these steps:
 
 1. Clone this repository to your local environment.
-2. Install the required dependencies using `pip install -r requirements.txt`.
-3. Navigate to each directory (e.g., `flask/flask_app`, `downstream`) and follow the setup instructions provided in their respective `README.md` files.
-4. Open and run the Jupyter notebooks in the `reddit_mental_health_posts_analysis.ipynb` and `reddit_mental_health_posts_modeling.ipynb` to explore the data and perform detailed analysis.
-5. Start the Flask application as described in `flask/README.md` to interactively analyze sentiment of Reddit posts in real-time.
+2. Install the required dependencies using:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Navigate to each directory (e.g., `flask/flask_app`, `downstream`) and follow the setup instructions provided in their respective `README.md` files.
+5. Open and run the Jupyter notebooks in the `reddit_mental_health_posts_analysis.ipynb` and `reddit_mental_health_posts_downstream.ipynb` to explore the data and perform detailed analysis.
+6. Start the Flask application as described in `flask/README.md` to interactively analyze sentiment of Reddit posts in real-time.
 
 ## License
 
