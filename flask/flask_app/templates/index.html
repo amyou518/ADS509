@@ -85,7 +85,8 @@
     <form id="sentiment-form">
         <label for="post-input">Enter Reddit Post:</label><br>
         <textarea id="post-input" name="text" placeholder="Type your Reddit post here..." required></textarea><br><br>
-        <button type="submit">Predict Sentiment</button>
+        <button id="predict-button">Predict Sentiment</button>
+        <button type="button" id="clear-button" class="refresh-icon">Clear</button>
     </form>
     <div id="sentiment-result">
         <p>Sentiment: <span id="sentiment-value" class="sentiment-neutral">neutral</span></p>
@@ -93,43 +94,85 @@
     </div>
 
     <script>
-        document.getElementById('post-input').addEventListener('input', function(event) {
-            // Reset sentiment and advice display
-            document.getElementById('sentiment-value').textContent = 'Analyzing...';
-            document.getElementById('advice').textContent = '';
+        const postInput = document.getElementById('post-input');
+        const predictButton = document.getElementById('predict-button');
+        const clearButton = document.getElementById('clear-button');
+        const sentimentResult = document.getElementById('sentiment-result');
+        const sentimentValue = document.getElementById('sentiment-value');
+        const adviceElement = document.getElementById('advice');
 
-            fetch('/predict', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ text: event.target.value })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const sentimentValue = document.getElementById('sentiment-value');
-                sentimentValue.textContent = data.sentiment;
+        let typingTimer; // Timer identifier
+        const doneTypingInterval = 1000; // 1 second (adjust as needed)
 
-                // Remove existing sentiment classes
-                sentimentValue.classList.remove('sentiment-negative', 'sentiment-positive', 'sentiment-neutral');
+        // On textarea input (while typing)
+        postInput.addEventListener('input', function(event) {
+            clearTimeout(typingTimer); // Clear any existing timer
 
-                // Add appropriate sentiment class based on data.sentiment
-                if (data.sentiment === 'negative') {
-                    sentimentValue.classList.add('sentiment-negative');
-                } else if (data.sentiment === 'positive') {
-                    sentimentValue.classList.add('sentiment-positive');
-                } else {
-                    sentimentValue.classList.add('sentiment-neutral');
-                }
+            if (event.target.value.trim() !== '') {
+                showAnalyzingMessage(); // Show "Analyzing..." message
+                typingTimer = setTimeout(performPrediction, doneTypingInterval); // Set timer to perform prediction
+            }
+        });
 
-                const adviceElement = document.getElementById('advice');
-                if (data.sentiment === 'negative') {
-                    adviceElement.innerHTML = data.advice;
-                } else {
-                    adviceElement.textContent = data.advice;
-                }
-            })
-            .catch(error => console.error('Error:', error));
+        // Function to show "Analyzing..." message
+        function showAnalyzingMessage() {
+            sentimentValue.textContent = 'Analyzing...';
+            sentimentValue.classList.remove('sentiment-negative', 'sentiment-positive', 'sentiment-neutral');
+        }
+
+        // Function to perform sentiment prediction
+        function performPrediction() {
+            const text = postInput.value.trim();
+
+            if (text !== '') {
+                fetch('/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ text: text })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    sentimentValue.textContent = data.sentiment;
+
+                    // Remove existing sentiment classes
+                    sentimentValue.classList.remove('sentiment-negative', 'sentiment-positive', 'sentiment-neutral');
+
+                    // Add appropriate sentiment class based on data.sentiment
+                    if (data.sentiment === 'negative') {
+                        sentimentValue.classList.add('sentiment-negative');
+                    } else if (data.sentiment === 'positive') {
+                        sentimentValue.classList.add('sentiment-positive');
+                    } else {
+                        sentimentValue.classList.add('sentiment-neutral');
+                    }
+
+                    // Update advice
+                    if (data.sentiment === 'negative') {
+                        adviceElement.innerHTML = data.advice;
+                    } else {
+                        adviceElement.textContent = data.advice;
+                    }
+
+                    // Show the sentiment result div
+                    sentimentResult.style.display = 'block';
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+
+        // On button click (predict sentiment)
+        predictButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            performPrediction(); // Perform prediction immediately on button click
+        });
+
+        // On button click (clear textarea and hide sentiment result)
+        clearButton.addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            postInput.value = ''; // Clear textarea
+            sentimentResult.style.display = 'none'; // Hide sentiment result
         });
     </script>
 </body>
