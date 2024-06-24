@@ -1,5 +1,23 @@
 # Exploring Mental Health Discourse on Reddit
 
+## Contributors 
+Amy Ou, S M Sultan Mahmud Rahat, and Samantha Rivas 
+
+1. [Analysis Goals](#analysis-goals)
+2. [Methodology](#methodology)
+3. [Dataset Description](#dataset-description)
+   - [Data Source](#data-source)
+   - [Number of Variables](#number-of-variables)
+   - [Dataset Size](#dataset-size)
+4. [Repository Contents](#repository-contents)
+   - [data/](#data)
+   - [downstream/](#downstream)
+   - [flask/](#flask)
+   - [Jupyter Notebooks](#jupyter-notebooks)
+5. [Prerequisites](#prerequisites)
+6. [Usage](#usage)
+7. [License](#license)
+
 ## Analysis Goals
 
 This project aims to analyze and understand the discourse surrounding mental health topics on Reddit, specifically focusing on the communities of `r/MentalHealth` and `r/MentalHealthSupport`. The analysis will explore patterns in posts, sentiment expressed, and common topics discussed within these communities.
@@ -35,15 +53,34 @@ The dataset contains 13 variables:
 The combined dataset contains 3,977 entries.
 
 ## Repository Contents
-- `data/`: Folder containing the following datasets used for analysis:
-  - `mental_health_posts.csv`: Dataset from `r/MentalHealth`.
-  - `mental_health_support_posts.csv`: Dataset from `r/MentalHealthSupport`.
-  - `reddit_posts.csv`: The combined dataset of posts from both subreddits.
-  - `mental_health_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealth`.
-  - `mental_health_support_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealthSupport`.
-  - `reddit_posts.csv_cleaned`: Cleaned dataset after normalization and tokenization for the combined dataset.
-- `reddit_mental_health_posts_extraction.ipynb`: Jupyter Notebook focusing on data retrieval and extraction of Reddit posts related to mental health.
-- `reddit_mental_health_posts_analysis.ipynb`: Jupyter Notebook focusing on tokenization, normalization, and descriptive statistics analysis of Reddit posts related to mental health.
+- **data/**: Directory containing datasets used for analysis:
+  - `mental_health_posts.csv`: Data from `r/MentalHealth`.
+  - `mental_health_support_posts.csv`: Data from `r/MentalHealthSupport`.
+  - `reddit_posts.csv`: Combined dataset from both subreddits.
+  - `mental_health_posts_cleaned.csv`: Cleaned data for `r/MentalHealth`.
+  - `mental_health_support_posts_cleaned.csv`: Cleaned data for `r/MentalHealthSupport`.
+  - `reddit_posts.csv_cleaned`: Cleaned combined dataset.
+
+- **downstream/**: Directory containing downstream data analysis:
+  - `readme.md`: Detailed description of downstream analysis.
+  - `requirement.txt`: Dependency list for downstream analysis.
+  - `results_df.csv`: Aggregated results from analysis.
+  - `sentiment_analysis.csv`: Additional sentiment-related analysis results.
+
+- **flask/**: Directory with Flask application for sentiment analysis:
+  - `requirement.txt`: Dependencies for Flask application.
+  - `readme.md`: Description of the Flask application.
+  - **flask_app/**: Files for Flask application:
+    - `app.py`: Main script for Flask application.
+    - `sentiment_model.joblib`: Model file for sentiment analysis.
+    - **templates/**: HTML templates for Flask app.
+    - **static/**: Static assets (e.g., CSS files).
+
+- **Jupyter Notebooks**: Notebooks focusing on different aspects of the analysis:
+  - `reddit_mental_health_posts_extraction.ipynb`: Data extraction from Reddit related to mental health.
+  - `reddit_mental_health_posts_analysis.ipynb`: Tokenization, normalization, and descriptive statistics of Reddit posts.
+  - `reddit_mental_health_posts_downstream.ipynb`: Advanced text analysis and machine learning techniques for sentiment analysis and topic modeling in `r/MentalHealth` and `r/MentalHealthSupport` communities.
+
 
 ### Prerequisites
 To run the analysis, make sure you have the following installed:
@@ -51,3 +88,20 @@ To run the analysis, make sure you have the following installed:
 - `praw` library
 - `pandas` library
 - `nltk` library (with WordNet, punkt, stopwords datasets downloaded)
+
+## Usage
+
+To replicate this analysis on your local machine, follow these steps:
+
+1. Clone this repository to your local environment.
+2. Install the required dependencies using:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Navigate to each directory (e.g., `flask/flask_app`, `downstream`) and follow the setup instructions provided in their respective `README.md` files.
+5. Open and run the Jupyter notebooks in the `reddit_mental_health_posts_analysis.ipynb` and `reddit_mental_health_posts_downstream.ipynb` to explore the data and perform detailed analysis.
+6. Start the Flask application as described in `flask/README.md` to interactively analyze sentiment of Reddit posts in real-time.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
