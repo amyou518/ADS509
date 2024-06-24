@@ -9,8 +9,14 @@ The Flask application in this project allows users to perform sentiment analysis
 1. Ensure you have Python installed on your system.
 2. Install dependencies using `pip install -r flask/requirement.txt`.
 3. Navigate to the `flask/flask_app` directory.
-4. Run the Flask application using the following command:
-5. Once the application is running, open a web browser and go to `http://localhost:2001/` to access the application.
+4. Create a virtual environment (optional but recommended):
+   python -m venv venv
+5. Activate the virtual environment:
+   source venv/bin/activate
+7. Install dependencies using `requirement.txt`: pip install -r flask/requirement.txt
+8. Run the Flask application using the following command:
+   python app.py
+9. Once the application is running, open a web browser and go to `http://localhost:2001/` to access the application.
 
 #### Using the Application
 
