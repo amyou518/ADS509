@@ -1,7 +1,7 @@
 # Exploring Mental Health Discourse on Reddit
 
 ## Contributors 
-Amy Ou, S M Sultan Mahmud Rahat, Samantha Rivas 
+Amy Ou, S M Sultan Mahmud Rahat, and Samantha Rivas 
 
 1. [Analysis Goals](#analysis-goals)
 2. [Methodology](#methodology)
