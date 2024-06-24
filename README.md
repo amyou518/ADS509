@@ -15,6 +15,8 @@ Amy Ou, S M Sultan Mahmud Rahat, and Samantha Rivas
    - [flask/](#flask)
    - [Jupyter Notebooks](#jupyter-notebooks)
 5. [Prerequisites](#prerequisites)
+6. [Usage](#usage)
+7. [License](#license)
 
 ## Analysis Goals
 
