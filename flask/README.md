@@ -2,6 +2,8 @@
 
 The Flask application in this project allows users to perform sentiment analysis on Reddit mental health posts.
 
+**Link to Flask app: https://bit.ly/reddit-sentiment-analysis**
+
 ### Usage
 
 #### Setting Up the Flask Application
