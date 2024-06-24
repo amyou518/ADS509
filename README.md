@@ -1,5 +1,18 @@
 # Exploring Mental Health Discourse on Reddit
 
+1. [Analysis Goals](#analysis-goals)
+2. [Methodology](#methodology)
+3. [Dataset Description](#dataset-description)
+   - [Data Source](#data-source)
+   - [Number of Variables](#number-of-variables)
+   - [Dataset Size](#dataset-size)
+4. [Repository Contents](#repository-contents)
+   - [data/](#data)
+   - [downstream/](#downstream)
+   - [flask/](#flask)
+   - [Jupyter Notebooks](#jupyter-notebooks)
+5. [Prerequisites](#prerequisites)
+
 ## Analysis Goals
 
 This project aims to analyze and understand the discourse surrounding mental health topics on Reddit, specifically focusing on the communities of `r/MentalHealth` and `r/MentalHealthSupport`. The analysis will explore patterns in posts, sentiment expressed, and common topics discussed within these communities.
@@ -35,32 +48,34 @@ The dataset contains 13 variables:
 The combined dataset contains 3,977 entries.
 
 ## Repository Contents
-- `data/`: Folder containing the following datasets used for analysis:
-  - `mental_health_posts.csv`: Dataset from `r/MentalHealth`.
-  - `mental_health_support_posts.csv`: Dataset from `r/MentalHealthSupport`.
-  - `reddit_posts.csv`: The combined dataset of posts from both subreddits.
-  - `mental_health_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealth`.
-  - `mental_health_support_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealthSupport`.
-  - `reddit_posts.csv_cleaned`: Cleaned dataset after normalization and tokenization for the combined dataset.
+- **data/**: Directory containing datasets used for analysis:
+  - `mental_health_posts.csv`: Data from `r/MentalHealth`.
+  - `mental_health_support_posts.csv`: Data from `r/MentalHealthSupport`.
+  - `reddit_posts.csv`: Combined dataset from both subreddits.
+  - `mental_health_posts_cleaned.csv`: Cleaned data for `r/MentalHealth`.
+  - `mental_health_support_posts_cleaned.csv`: Cleaned data for `r/MentalHealthSupport`.
+  - `reddit_posts.csv_cleaned`: Cleaned combined dataset.
 
-- `downstream/`: Directory containing downstream data results:
-  - `readme.md`: Detailed description of the downstream analysis.
-  - `requirement.txt`: File listing dependencies for downstream analysis.
-  - `results_df.csv`: Aggregated results from the analysis.
-  - `sentiment_analysis.csv`: Additional analysis results related to sentiment.
-    
-- `flask/`: Directory containing Flask application for sentiment analysis:
-  - `requirement.txt`: File listing dependencies for the Flask application.
-  - `readme.md`: Detailed description of the Flask application.
-  - `flask_app/`: Directory containing Flask application files:
-    - `app.py`: Main Flask application script.
-    - `sentiment_model.joblib`: Sentiment analysis model file.
-    - `templates/`: Directory containing HTML templates for the Flask app.
-    - `static/`: Directory containing static assets (e.g., CSS stylesheets).
-      
-- `reddit_mental_health_posts_extraction.ipynb`: Focuses on data retrieval and extraction of Reddit posts related to mental health.
-- `reddit_mental_health_posts_analysis.ipynb`: Focuses on tokenization, normalization, and descriptive statistics analysis of Reddit posts related to mental health.
-- `reddit_mental_health_posts_modeling.ipynb`: Focuses on advanced text analysis and machine learning techniques to explore sentiment patterns and topic modeling within `r/MentalHealth` and `r/MentalHealthSupport` Reddit communities.
+- **downstream/**: Directory containing downstream data analysis:
+  - `readme.md`: Detailed description of downstream analysis.
+  - `requirement.txt`: Dependency list for downstream analysis.
+  - `results_df.csv`: Aggregated results from analysis.
+  - `sentiment_analysis.csv`: Additional sentiment-related analysis results.
+
+- **flask/**: Directory with Flask application for sentiment analysis:
+  - `requirement.txt`: Dependencies for Flask application.
+  - `readme.md`: Description of the Flask application.
+  - **flask_app/**: Files for Flask application:
+    - `app.py`: Main script for Flask application.
+    - `sentiment_model.joblib`: Model file for sentiment analysis.
+    - **templates/**: HTML templates for Flask app.
+    - **static/**: Static assets (e.g., CSS files).
+
+- **Jupyter Notebooks**: Notebooks focusing on different aspects of the analysis:
+  - `reddit_mental_health_posts_extraction.ipynb`: Data extraction from Reddit related to mental health.
+  - `reddit_mental_health_posts_analysis.ipynb`: Tokenization, normalization, and descriptive statistics of Reddit posts.
+  - `reddit_mental_health_posts_modeling.ipynb`: Advanced text analysis and machine learning techniques for sentiment analysis and topic modeling in `r/MentalHealth` and `r/MentalHealthSupport` communities.
+
 
 ### Prerequisites
 To run the analysis, make sure you have the following installed:
