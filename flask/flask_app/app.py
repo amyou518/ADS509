@@ -7,11 +7,11 @@ model_path = os.path.join(os.path.dirname(__file__), model_filename)
 
 app = Flask(__name__)
 
-# Debug: Print current working directory
+# debug - print current working directory
 print(f"Current working directory: {os.getcwd()}")
 print(f"Model path: {model_path}")
 
-# Load the sentiment analysis model
+# load sentiment analysis model
 try:
     sentiment_pipeline = joblib.load(model_path)
     print("Model loaded successfully.")
@@ -22,18 +22,18 @@ except Exception as e:
     print(f"Error loading model from '{model_path}': {e}")
     sentiment_pipeline = None
 
-# Function to classify sentiment and generate advice
+# function to classify sentiment and generate advice
 def classify_sentiment(text):
     try:
         print(f"Classifying sentiment for text: {text}")
         sentiment_result = sentiment_pipeline.predict([text])[0]
         print(f"Sentiment result: {sentiment_result}")
 
-        # Extracting sentiment information
+        # extracting sentiment information
         sentiment = sentiment_result.get('label', 'neutral')
         sentiment_score = sentiment_result.get('score', 0.0)
 
-        # Generate advice based on sentiment
+        # generate advice based on sentiment
         advice = ''
         if sentiment == 'negative':
             advice = 'Consider seeking help or support from mental health professionals or advocates. Here are some resources:'
@@ -68,11 +68,11 @@ def predict():
 
         text = data['text']
 
-        # Perform sentiment analysis and get advice
+        # perform sentiment analysis and get advice
         sentiment_result = classify_sentiment(text)
         print(f"Sentiment analysis result: {sentiment_result}")
 
-        # Prepare response JSON
+        # prepare response JSON
         response = {
             'sentiment': sentiment_result['sentiment'],
             'sentiment_score': sentiment_result['sentiment_score'],
@@ -85,4 +85,4 @@ def predict():
         return jsonify({'error': 'UnexpectedError', 'message': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True, port=2001)
+    app.run(debug=True, port=8000)
