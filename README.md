@@ -42,8 +42,25 @@ The combined dataset contains 3,977 entries.
   - `mental_health_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealth`.
   - `mental_health_support_posts_cleaned.csv`: Cleaned dataset after normalization and tokenization for `r/MentalHealthSupport`.
   - `reddit_posts.csv_cleaned`: Cleaned dataset after normalization and tokenization for the combined dataset.
-- `reddit_mental_health_posts_extraction.ipynb`: Jupyter Notebook focusing on data retrieval and extraction of Reddit posts related to mental health.
-- `reddit_mental_health_posts_analysis.ipynb`: Jupyter Notebook focusing on tokenization, normalization, and descriptive statistics analysis of Reddit posts related to mental health.
+
+- `downstream/`: Directory containing downstream data results:
+  - `readme.md`: Detailed description of the downstream analysis.
+  - `requirement.txt`: File listing dependencies for downstream analysis.
+  - `results_df.csv`: Aggregated results from the analysis.
+  - `sentiment_analysis.csv`: Additional analysis results related to sentiment.
+    
+- `flask/`: Directory containing Flask application for sentiment analysis:
+  - `requirement.txt`: File listing dependencies for the Flask application.
+  - `readme.md`: Detailed description of the Flask application.
+  - `flask_app/`: Directory containing Flask application files:
+    - `app.py`: Main Flask application script.
+    - `sentiment_model.joblib`: Sentiment analysis model file.
+    - `templates/`: Directory containing HTML templates for the Flask app.
+    - `static/`: Directory containing static assets (e.g., CSS stylesheets).
+      
+- `reddit_mental_health_posts_extraction.ipynb`: Focuses on data retrieval and extraction of Reddit posts related to mental health.
+- `reddit_mental_health_posts_analysis.ipynb`: Focuses on tokenization, normalization, and descriptive statistics analysis of Reddit posts related to mental health.
+- `reddit_mental_health_posts_modeling.ipynb`: Focuses on advanced text analysis and machine learning techniques to explore sentiment patterns and topic modeling within `r/MentalHealth` and `r/MentalHealthSupport` Reddit communities.
 
 ### Prerequisites
 To run the analysis, make sure you have the following installed:
