@@ -1,5 +1,8 @@
 # Exploring Mental Health Discourse on Reddit
 
+## Contributors 
+Amy Ou, S M Sultan Mahmud Rahat, Samantha Rivas 
+
 1. [Analysis Goals](#analysis-goals)
 2. [Methodology](#methodology)
 3. [Dataset Description](#dataset-description)
@@ -83,3 +86,17 @@ To run the analysis, make sure you have the following installed:
 - `praw` library
 - `pandas` library
 - `nltk` library (with WordNet, punkt, stopwords datasets downloaded)
+
+## Usage
+
+To replicate this analysis on your local machine, follow these steps:
+
+1. Clone this repository to your local environment.
+2. Install the required dependencies using `pip install -r requirements.txt`.
+3. Navigate to each directory (e.g., `flask/flask_app`, `downstream`) and follow the setup instructions provided in their respective `README.md` files.
+4. Open and run the Jupyter notebooks in the `reddit_mental_health_posts_analysis.ipynb` and `reddit_mental_health_posts_modeling.ipynb` to explore the data and perform detailed analysis.
+5. Start the Flask application as described in `flask/README.md` to interactively analyze sentiment of Reddit posts in real-time.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
