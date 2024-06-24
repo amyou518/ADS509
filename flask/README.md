@@ -2,6 +2,8 @@
 
 The Flask application in this project allows users to perform sentiment analysis on Reddit mental health posts.
 
+**Link to Flask app: https://5215-73-235-72-67.ngrok-free.app**
+
 ### Usage
 
 #### Setting Up the Flask Application
