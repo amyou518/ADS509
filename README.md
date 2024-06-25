@@ -66,6 +66,7 @@ The combined dataset contains 3,977 entries.
   - `requirement.txt`: Dependency list for downstream analysis.
   - `results_df.csv`: Aggregated results from analysis.
   - `sentiment_analysis.csv`: Additional sentiment-related analysis results.
+  - `lda_visualization.html`: HTML file containing interactive visualizations and insights generated from topic modeling using Latent Dirichlet Allocation (LDA). This file visually represents the identified topics within the subreddit data, providing a deeper understanding of the thematic structure and discussions.
 
 - **flask/**: Directory with Flask application for sentiment analysis:
   - `requirement.txt`: Dependencies for Flask application.
